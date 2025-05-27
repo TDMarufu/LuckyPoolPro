@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 240 10% 3.9%; /* #111827 */
+  --foreground: 0 0% 98%; /* #F9FAFB */
+  --muted: 240 3.7% 15.9%; /* #1F2937 */
+  --muted-foreground: 240 5% 64.9%; /* #9CA3AF */
+  --popover: 240 10% 3.9%; /* #111827 */
+  --popover-foreground: 0 0% 98%; /* #F9FAFB */
+  --card: 240 3.7% 15.9%; /* #1F2937 */
+  --card-foreground: 0 0% 98%; /* #F9FAFB */
+  --border: 240 3.7% 15.9%; /* #374151 */
+  --input: 240 3.7% 15.9%; /* #374151 */
+  --primary: 248 90% 66%; /* #6366F1 */
+  --primary-foreground: 0 0% 98%; /* #F9FAFB */
+  --secondary: 142 71% 45%; /* #10B981 */
+  --secondary-foreground: 0 0% 98%; /* #F9FAFB */
+  --accent: 38 92% 50%; /* #F59E0B */
+  --accent-foreground: 240 10% 3.9%; /* #111827 */
+  --destructive: 0 84.2% 60.2%; /* #EF4444 */
+  --destructive-foreground: 0 0% 98%; /* #F9FAFB */
+  --ring: 248 90% 66%; /* #6366F1 */
+  --radius: 0.5rem;
+  
+  /* Gaming specific colors */
+  --surface: 215 25% 27%; /* #1F2937 */
+  --text-primary: 0 0% 98%; /* #F9FAFB */
+  --text-secondary: 240 5% 64.9%; /* #9CA3AF */
+  
+  /* Chart colors */
+  --chart-1: 248 90% 66%;
+  --chart-2: 142 71% 45%;
+  --chart-3: 38 92% 50%;
+  --chart-4: 271 91% 65%;
+  --chart-5: 0 84% 60%;
+}
+
+.light {
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 3.9%;
+  --border: 240 5.9% 90%;
+  --input: 240 5.9% 90%;
+  --primary: 248 90% 66%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 142 71% 45%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 38 92% 50%;
+  --accent-foreground: 240 10% 3.9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 10% 3.9%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .gaming-card {
+    @apply bg-card border border-border rounded-xl hover:border-primary/50 transition-all duration-300;
+  }
+  
+  .gaming-button {
+    @apply bg-primary hover:bg-primary/90 text-primary-foreground font-medium transition-colors;
+  }
+  
+  .gaming-button-secondary {
+    @apply bg-secondary hover:bg-secondary/90 text-secondary-foreground font-medium transition-colors;
+  }
+  
+  .gaming-button-accent {
+    @apply bg-accent hover:bg-accent/90 text-accent-foreground font-medium transition-colors;
+  }
+  
+  .gaming-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+  }
+  
+  .premium-gradient {
+    background: linear-gradient(135deg, hsl(var(--accent)) 0%, #f97316 100%);
+  }
+  
+  .lightning-gradient {
+    background: linear-gradient(135deg, #ef4444 0%, #ec4899 100%);
+  }
+  
+  .tournament-gradient {
+    background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+  }
+}
+
+/* Custom animations */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* WebSocket status indicator */
+.ws-connected {
+  @apply bg-green-500;
+}
+
+.ws-disconnected {
+  @apply bg-red-500;
+}
+
+.ws-connecting {
+  @apply bg-yellow-500;
+}
